@@ -29,11 +29,12 @@ app
         res.json(details)
     })
     .post('/api/generate', async (req, res) => {
+        const {range} = req.body
         if((await Employee.find()).length!=0){
             await Employee.deleteMany({});
         }
         else{
-            for(let i=1;i<=10;i++){
+            for(let i=1;i<=range;i++){
                 await Employee.create({
                     name:names[random(0,names.length-1)],
                     salary:random(80000,200000),
