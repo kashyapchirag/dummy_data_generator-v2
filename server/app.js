@@ -9,11 +9,9 @@ app.use(cors({
     origin: "http://localhost:5173",
     methods: ["GET", "POST"],
 }));
-
 app.use(express.json())
 
 const names = ["Harry", "Chirag", "Aman", "Rohit", "Neha", "Priya", "Kunal", "Sneha", "Arjun", "Simran"]
-// salary 300000 to 9000000
 const lang = ["JavaScript", "Python", "Java", "C++", "Go", "Rust", "TypeScript"]
 const cities = ["New York", "London", "Berlin", "Tokyo", "Bangalore", "Delhi", "Toronto"]
 const bool = [true, false];
@@ -30,8 +28,6 @@ app
         const details = await Employee.find({})
         res.json(details)
     })
-
-
     .post('/api/generate', async (req, res) => {
         if((await Employee.find()).length!=0){
             await Employee.deleteMany({});
@@ -51,7 +47,6 @@ app
             message:"Employee data created",
         })
     })
-
     .listen(port, () => {
         console.log(`Example app listening on port ${port}`)
     })
